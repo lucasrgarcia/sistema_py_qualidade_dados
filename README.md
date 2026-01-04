@@ -1,26 +1,26 @@
 Qualidade de Dados em Ação (Python)
 
-Este repositório contém um pipeline automatizado em Python para validação, monitoramento e melhoria contínua da qualidade de dados, com regras reutilizáveis, classificação de severidade e comparação de resultados antes e depois.
+Este repositório contém um pipeline automatizado em Python que implementa um fluxo de validação → classificação de falhas → melhoria de dados → revalidação → evidência de resultados antes e depois.
 
 Observação: projeto demonstrativo para portfólio. Os dados são simulados e não representam informações reais.
 
 O que este projeto resolve
 
-Em projetos de dados, é comum encontrar problemas como:
+Em projetos de dados, é comum haver:
 
-Valores duplicados e inconsistentes
+Valores duplicados ou inconsistentes
 
-Campos obrigatórios ausentes
+Campos obrigatórios nulos
 
 Valores fora do domínio esperado
 
 Datas inválidas ou mal formatadas
 
-Falta de visibilidade sobre a evolução da qualidade dos dados
+Falta de rastreabilidade sobre a evolução da qualidade dos dados
 
-Na prática, muitos fluxos apenas apontam erros, sem medir impacto ou acompanhar melhorias ao longo do tempo.
+Na prática, muitos processos apenas identificam erros pontuais, sem medir impacto ou acompanhar melhorias ao longo do tempo.
 
-Este projeto transforma a validação de dados em um processo estruturado, mensurável e rastreável.
+Este projeto transforma a validação de dados em um processo padronizado, mensurável e auditável.
 
 Visão geral do fluxo
 
@@ -28,19 +28,23 @@ Geração ou ingestão dos dados
 
 Dataset tabular com problemas simulados de qualidade
 
-Validação inicial (baseline)
+O pipeline executa:
 
-Execução de regras automatizadas de qualidade
+Validação automática de regras de qualidade
 
 Classificação das falhas por severidade (ERROR / WARNING)
 
-Geração de relatório e logs
+Geração de relatório inicial e logs
 
-Ações de melhoria
+Ações de melhoria de dados
 
-Aplicação de correções seguras e justificáveis
+Remoção de duplicidades
 
-Sem mascarar problemas estruturais dos dados
+Tratamento de valores fora do domínio
+
+Padronização de campos
+
+Conversão segura de datas inválidas
 
 Revalidação
 
@@ -50,7 +54,7 @@ Comparação objetiva dos resultados antes e depois
 
 Evidência e rastreabilidade
 
-Relatórios CSV versionados
+Relatórios em CSV
 
 Logs automáticos para auditoria
 
@@ -60,44 +64,42 @@ Pipeline reutilizável de validação de dados
 
 Regras automatizadas de qualidade (nulos, duplicados, domínio, datas)
 
-Classificação de falhas por severidade (ERROR / WARNING)
+Severidade de falhas (ERROR / WARNING)
 
 Comparação antes e depois das ações corretivas
 
-Geração de relatórios em CSV
+Relatórios em CSV para histórico
 
-Logging estruturado para auditoria e histórico
+Logging estruturado para rastreabilidade
 
 Código organizado e fácil de evoluir
 
 Regras de qualidade implementadas
 
-Verificação de valores nulos em campos críticos
+Valores nulos em campos críticos
 
-Validação de intervalo de valores (ex.: idade)
+Intervalos de valores (ex.: idade)
 
-Identificação de duplicidade de chaves e e-mails
+Duplicidade de chaves e e-mails
 
-Validação de datas inválidas
+Datas inválidas ou mal formatadas
 
-Classificação do impacto das falhas
+Classificação de impacto das falhas
 
 Abordagem de melhoria contínua
 
 O projeto segue a lógica de:
 
-Medir → Melhorar → Medir novamente
+Medir a qualidade dos dados
 
-O critério de qualidade permanece o mesmo entre as execuções.
+Aplicar melhorias seguras onde possível
+
+Medir novamente usando os mesmos critérios
+
+O critério de validação não muda entre as execuções.
 Apenas os dados são alterados.
 
-Isso permite:
-
-Medir impacto real das correções
-
-Acompanhar a evolução da qualidade dos dados
-
-Identificar problemas que precisam ser corrigidos na origem
+Isso garante transparência e evita mascarar problemas estruturais dos dados.
 
 Resultados observados
 
@@ -109,7 +111,7 @@ Correção de valores fora do domínio permitido
 
 Redução significativa de datas inválidas e valores nulos
 
-Identificação clara de limitações estruturais nos dados de entrada
+Identificação clara de problemas que exigem correção na origem dos dados
 
 Os resultados ficam registrados em relatórios antes e depois, permitindo comparação objetiva.
 
@@ -129,7 +131,7 @@ Funções de melhoria de dados
 
 Geração de relatórios e logs
 
-Essa abordagem mantém o projeto simples, legível e alinhado a cenários reais.
+Essa estrutura mantém o projeto simples, legível e alinhado a cenários reais.
 
 Tecnologias utilizadas
 
@@ -141,7 +143,7 @@ Logging (Python nativo)
 
 Relatórios em CSV
 
-Como executar (modo demonstração)
+Como usar (modo demonstração)
 
 Clone o repositório
 
@@ -163,14 +165,14 @@ Salvar relatórios e logs
 
 Observações técnicas
 
-As ações corretivas são intencionais e conservadoras
+As ações corretivas são conservadoras e justificáveis
 
-Nem todo erro é corrigido automaticamente
+Nem todo erro pode ser corrigido automaticamente
 
 Falhas remanescentes indicam problemas na origem dos dados
 
-O projeto prioriza clareza e rastreabilidade em vez de “limpeza agressiva”
+O foco do projeto é evidência de melhoria, não apenas limpeza agressiva
 
 Licença
 
-Projeto desenvolvido para fins educacionais e de portfólio.
+Uso demonstrativo e educacional, desenvolvido para portfólio profissional.
