@@ -1,63 +1,107 @@
-Visão Geral
+Qualidade de Dados em Ação (Python)
 
-Este projeto demonstra como a qualidade de dados pode ser tratada como um processo contínuo, e não apenas como uma verificação pontual.
-A solução implementa um pipeline automatizado de validação de dados capaz de identificar problemas de qualidade, classificar falhas por impacto e medir objetivamente a evolução da qualidade dos dados ao longo do tempo.
+Este repositório contém um pipeline automatizado em Python para validação, monitoramento e melhoria contínua da qualidade de dados, com regras reutilizáveis, classificação de severidade e comparação de resultados antes e depois.
 
-O projeto foi desenvolvido para refletir cenários reais encontrados em ambientes corporativos, comuns em times de dados, BI e melhoria contínua.
+Observação: projeto demonstrativo para portfólio. Os dados são simulados e não representam informações reais.
 
-Problema
+O que este projeto resolve
 
-Dados com baixa qualidade podem gerar análises incorretas, retrabalho constante, decisões equivocadas e perda de confiança nas informações.
-Na prática, muitos projetos apenas apontam erros, sem mensurar impacto ou acompanhar melhorias.
+Em projetos de dados, é comum encontrar problemas como:
 
-Este projeto aborda esse problema ao tratar a qualidade dos dados como um processo mensurável e rastreável.
+Valores duplicados e inconsistentes
 
-Solução
+Campos obrigatórios ausentes
 
-Foi criado um sistema automatizado de qualidade de dados que executa o seguinte fluxo:
+Valores fora do domínio esperado
 
-Medição inicial da qualidade dos dados
+Datas inválidas ou mal formatadas
 
-Validação automatizada com regras reutilizáveis
+Falta de visibilidade sobre a evolução da qualidade dos dados
 
-Classificação das falhas por severidade
+Na prática, muitos fluxos apenas apontam erros, sem medir impacto ou acompanhar melhorias ao longo do tempo.
 
-Aplicação de melhorias seguras onde possível
+Este projeto transforma a validação de dados em um processo estruturado, mensurável e rastreável.
 
-Revalidação usando os mesmos critérios
+Visão geral do fluxo
+
+Geração ou ingestão dos dados
+
+Dataset tabular com problemas simulados de qualidade
+
+Validação inicial (baseline)
+
+Execução de regras automatizadas de qualidade
+
+Classificação das falhas por severidade (ERROR / WARNING)
+
+Geração de relatório e logs
+
+Ações de melhoria
+
+Aplicação de correções seguras e justificáveis
+
+Sem mascarar problemas estruturais dos dados
+
+Revalidação
+
+Execução das mesmas regras após as melhorias
 
 Comparação objetiva dos resultados antes e depois
 
-Esse fluxo garante transparência e evita mascarar problemas estruturais dos dados.
+Evidência e rastreabilidade
 
-Como Funciona
+Relatórios CSV versionados
 
-O pipeline executa validações automáticas, incluindo:
+Logs automáticos para auditoria
 
-Verificação de valores nulos
+Principais funcionalidades
 
-Validação de intervalos de valores
+Pipeline reutilizável de validação de dados
 
-Identificação de registros duplicados
+Regras automatizadas de qualidade (nulos, duplicados, domínio, datas)
+
+Classificação de falhas por severidade (ERROR / WARNING)
+
+Comparação antes e depois das ações corretivas
+
+Geração de relatórios em CSV
+
+Logging estruturado para auditoria e histórico
+
+Código organizado e fácil de evoluir
+
+Regras de qualidade implementadas
+
+Verificação de valores nulos em campos críticos
+
+Validação de intervalo de valores (ex.: idade)
+
+Identificação de duplicidade de chaves e e-mails
 
 Validação de datas inválidas
 
-Classificação das falhas por severidade (ERROR e WARNING)
+Classificação do impacto das falhas
 
-Após a validação inicial, são aplicadas ações corretivas simples e justificáveis, como remoção de duplicados, tratamento de valores fora do domínio, padronização de campos e conversão segura de datas.
+Abordagem de melhoria contínua
 
-Em seguida, o pipeline é executado novamente para medir o impacto dessas ações.
+O projeto segue a lógica de:
 
-Abordagem de Melhoria Contínua
+Medir → Melhorar → Medir novamente
 
-O projeto segue a lógica de medir, melhorar e medir novamente.
-O critério de qualidade permanece o mesmo entre as execuções; apenas os dados são alterados.
+O critério de qualidade permanece o mesmo entre as execuções.
+Apenas os dados são alterados.
 
-Essa abordagem permite acompanhar a evolução da qualidade dos dados e identificar problemas que exigem correção na origem.
+Isso permite:
 
-Resultados
+Medir impacto real das correções
 
-Com a aplicação do pipeline, foi possível observar:
+Acompanhar a evolução da qualidade dos dados
+
+Identificar problemas que precisam ser corrigidos na origem
+
+Resultados observados
+
+Com a aplicação do pipeline, é possível observar:
 
 Eliminação de registros duplicados
 
@@ -65,11 +109,11 @@ Correção de valores fora do domínio permitido
 
 Redução significativa de datas inválidas e valores nulos
 
-Identificação clara de limitações estruturais nos dados de origem
+Identificação clara de limitações estruturais nos dados de entrada
 
-Os resultados são registrados em relatórios CSV e logs automáticos, permitindo auditoria e acompanhamento histórico.
+Os resultados ficam registrados em relatórios antes e depois, permitindo comparação objetiva.
 
-Estrutura do Projeto
+Estrutura do projeto
 
 O projeto está organizado em um único arquivo Python contendo:
 
@@ -77,45 +121,56 @@ Gerador de dados com erros simulados
 
 Contrato de validação padronizado
 
-Regras de validação reutilizáveis
+Funções de validação reutilizáveis
 
 Pipeline de execução
 
 Funções de melhoria de dados
 
-Relatórios antes e depois
+Geração de relatórios e logs
 
-Logging estruturado
+Essa abordagem mantém o projeto simples, legível e alinhado a cenários reais.
 
-Essa abordagem mantém o projeto simples, legível e fácil de evoluir.
-
-Tecnologias Utilizadas
+Tecnologias utilizadas
 
 Python
+
 Pandas
+
 Logging (Python nativo)
+
 Relatórios em CSV
 
-Principais Aprendizados
+Como executar (modo demonstração)
 
-Qualidade de dados deve ser tratada como processo contínuo
+Clone o repositório
 
-Nem todo erro pode ou deve ser corrigido automaticamente
+Instale as dependências (pandas)
 
-Classificar falhas por severidade auxilia na priorização
+Execute o script principal em Python
 
-Evidência de melhoria é mais importante do que apenas apontar erros
+O pipeline irá:
 
-Simplicidade e clareza são fundamentais em projetos reais
+Gerar os dados
 
-Possíveis Evoluções
+Executar a validação inicial
 
-Configuração de regras via JSON ou YAML
+Aplicar melhorias
 
-Integração com orquestradores
+Reexecutar a validação
 
-Dashboards para acompanhamento histórico
+Salvar relatórios e logs
 
-Testes automatizados
+Observações técnicas
 
-Integração com bancos de dados
+As ações corretivas são intencionais e conservadoras
+
+Nem todo erro é corrigido automaticamente
+
+Falhas remanescentes indicam problemas na origem dos dados
+
+O projeto prioriza clareza e rastreabilidade em vez de “limpeza agressiva”
+
+Licença
+
+Projeto desenvolvido para fins educacionais e de portfólio.
